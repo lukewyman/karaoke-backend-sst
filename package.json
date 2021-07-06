@@ -2,6 +2,10 @@
   "name": "karaoke-backend-sst",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "src/packages/*",
+    "src/services/*"
+  ],
   "scripts": {
     "test": "sst test",
     "start": "sst start",
@@ -11,11 +15,14 @@
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.105.0",
-    "@types/aws-lambda": "^8.10.70"
+    "@types/aws-lambda": "^8.10.70",
+    "@types/uuid": "^8.3.1",
+    "lerna": "^3.22.1"
   },
   "dependencies": {
+    "@aws-cdk/core": "1.105.0",
     "@serverless-stack/cli": "0.31.0",
     "@serverless-stack/resources": "0.31.0",
-    "@aws-cdk/core": "1.105.0"
+    "uuid": "^8.3.2"
   }
 }
