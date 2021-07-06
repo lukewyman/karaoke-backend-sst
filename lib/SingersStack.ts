@@ -15,7 +15,7 @@ export default class SingersStack extends sst.Stack {
             }
         });
 
-        const api = new sst.Api(this, 'Api', {
+        const singersApi = new sst.Api(this, 'SingersApi', {
             defaultFunctionProps: {
                 environment: {
                     singersTable: singersTable.dynamodbTable.tableName,
@@ -23,7 +23,7 @@ export default class SingersStack extends sst.Stack {
             },
         });
 
-        api.addRoutes(this, {
+        singersApi.addRoutes(this, {
             'POST /karaoke/singers': 'src/services/singers/functions/KAR_SNG_create_singer.handler',
             'GET /karaoke/singers/{singerId}': 'src/services/singers/functions/KAR_SNG_get_singer.handler',
             'GET /karaoke/singers': 'src/services/singers/functions/KAR_SNG_get_all_singers.handler',
@@ -31,20 +31,12 @@ export default class SingersStack extends sst.Stack {
             'DELETE /karaoke/singers/{singerId}': 'src/services/singers/functions/KAR_SNG_delete_singer.handler', 
         });
 
-        api.attachPermissions([singersTable]);
+        singersApi.attachPermissions([singersTable]);
 
         this.addOutputs({
-            'ApiEndpoint': {
-                value: api.url,
-                exportName: scope.logicalPrefixedName('SingersApi'),
-            },
-            'SingersTableName': {
-                value: singersTable.tableName,
-                exportName: scope.logicalPrefixedName('SingersTableName'),
-            },
-            'SingersTableArn': {
-                value: singersTable.tableArn,
-                exportName: scope.logicalPrefixedName('SingersTableArn'),
+            'SingersApiEndpoint': {
+                value: singersApi.url,
+                exportName: scope.logicalPrefixedName('SingersApiEndpoint'),
             }
         });
     }
