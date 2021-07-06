@@ -1,4 +1,3 @@
-import MyStack from "./MyStack";
 import GreetingsStack from './GreetingsStack';
 import * as sst from "@serverless-stack/resources";
 
@@ -8,7 +7,6 @@ export default function main(app: sst.App): void {
     runtime: "nodejs12.x"
   });
 
-  new MyStack(app, "my-stack");
   new GreetingsStack(app, 'greetings')
 
   // Add more stacks
