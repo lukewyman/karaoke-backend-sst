@@ -1,4 +1,4 @@
-import middify from "./middify";
-import formatJSONResponse from "./formatJsonResponse";
+import middify from './middify';
+import formatJSONResponse from './formatJsonResponse';
 
-export {middify, formatJSONResponse}
+export { middify, formatJSONResponse };

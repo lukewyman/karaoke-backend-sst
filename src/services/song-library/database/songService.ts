@@ -50,7 +50,7 @@ class SongService {
         ExpressionAttributeNames: {
           '#title': 'title',
           '#artist': 'artist',
-          '#play_duration': 'play_duration'
+          '#play_duration': 'play_duration',
         },
         ExpressionAttributeValues: {
           ':title': partialSong.title,
