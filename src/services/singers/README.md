@@ -1,3 +1,3 @@
 ## Singers Sub-Domain
 
-![Singers Architecture Diagram](../../../site-images/singers-architecture.png)
+<img src="../../../site-images/singers-architecture.png" width="250">
