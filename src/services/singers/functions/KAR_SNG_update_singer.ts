@@ -3,7 +3,6 @@ import { middify, formatJSONResponse } from 'lambda-helpers';
 import singerService from '../database';
 import UpdateSinger from '../dtos/updateSingerDto';
 
-
 export const handler: Handler = middify(
   async (event: APIGatewayProxyEvent & UpdateSinger): Promise<APIGatewayProxyResult> => {
     const singerId = event.pathParameters!.singerId!;
