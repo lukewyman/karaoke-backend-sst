@@ -1,6 +1,7 @@
 # Karaoke Backend
 
-This is a demo project that I have been working on as a way to wrap my head around building a backend using AWS serverless services and [Serverless Stack (sst)](https://serverless-stack.com). The app is written in Typescript and is composed of [Four Microservices](#microservices)
+This is a demo project that I have been working on as a way to wrap my head around building a backend using AWS serverless services and [Serverless Stack (sst)](https://serverless-stack.com). The app is written in Typescript and is composed of [Four Microservices](#microservices).
+
 <br />
 
 Core AWS Services
@@ -14,7 +15,6 @@ Core AWS Services
 ### Architectural Overview
 
 <img src="site-images/karaoke-overview.png" width="800" />
-<br /><br />
 
 ## Microservices
 
