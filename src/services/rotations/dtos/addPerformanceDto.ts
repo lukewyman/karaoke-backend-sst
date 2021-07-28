@@ -4,7 +4,6 @@ interface AddPerformance {
     songId: string;
     songTitle: string;
     artist: string;
-    performanceDate: string;
   };
 }
 

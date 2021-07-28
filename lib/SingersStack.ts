@@ -5,7 +5,7 @@ export default class SingersStack extends sst.Stack {
   constructor(scope: sst.App, id: string, singersTable: sst.Table, props?: sst.StackProps) {
     super(scope, id, props);
 
-    const singersApi = new sst.Api(this, 'SingersApi', {
+    const singersApi = new sst.Api(this, 'singers-api', {
       defaultFunctionProps: {
         environment: {
           singersTable: singersTable.dynamodbTable.tableName,

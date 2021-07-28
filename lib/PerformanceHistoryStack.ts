@@ -1,8 +1,10 @@
 import { RemovalPolicy } from '@aws-cdk/core';
 import * as sst from '@serverless-stack/resources';
+import * as targets from '@aws-cdk/aws-events-targets';
+import * as events from '@aws-cdk/aws-events';
 
 export default class PerformanceHistoryStack extends sst.Stack {
-  constructor(scope: sst.App, id: string, props?: sst.StackProps) {
+  constructor(scope: sst.App, id: string, performanceCompletedRule: events.Rule, props?: sst.StackProps) {
     super(scope, id, props);
 
     const performancesTable = new sst.Table(this, 'performances', {
@@ -22,13 +24,21 @@ export default class PerformanceHistoryStack extends sst.Stack {
     const performanceHistoryApi = new sst.Api(this, 'PerformanceHistoryApi', {
       defaultFunctionProps: {
         environment: {
-          performancesTable: performancesTable.dynamodbTable.tableName,
+          PERFORMANCES_TABLE: performancesTable.dynamodbTable.tableName,
         },
       },
     });
 
+    const historyLogger = new sst.Function(this, 'history-logger', {
+      handler: 'src/services/performance-history/functions/KAR_HST_add_performance.handler',
+      environment: {
+        PERFORMANCES_TABLE: performancesTable.dynamodbTable.tableName,
+      },
+    });
+    historyLogger.attachPermissions([performancesTable]);
+    performanceCompletedRule.addTarget(new targets.LambdaFunction(historyLogger));
+
     performanceHistoryApi.addRoutes(this, {
-      'POST /karaoke/performances': 'src/services/performance-history/functions/KAR_HST_add_performance.handler',
       'GET /karaoke/performances/{singerId}': 'src/services/performance-history/functions/KAR_HST_get_history.handler',
     });
 
