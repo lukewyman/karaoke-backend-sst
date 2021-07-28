@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, Handler, APIGatewayProxyResult } from 'aws-lambda
 import * as AWS from 'aws-sdk';
 import { middify, formatJSONResponse } from 'lambda-helpers';
 import AddPerformance from '../dtos/addPerformanceDto';
-import PerformanceCompleted from '../events/PerformanceCompleted';
+import { PerformanceCompleted } from 'karaoke-events';
 
 export const handler: Handler = middify(
   async (event: APIGatewayProxyEvent & AddPerformance): Promise<APIGatewayProxyResult> => {
@@ -15,8 +15,6 @@ export const handler: Handler = middify(
       performanceDate: new Date().toISOString(),
     };
 
-    console.log(`PerformanceCompleted: ${JSON.stringify(performanceCompleted)}`);
-
     const params = {
       Entries: [
         {
@@ -27,8 +25,6 @@ export const handler: Handler = middify(
         },
       ],
     };
-
-    console.log(`Params: ${JSON.stringify(params)}`);
 
     try {
       const eventBridge = new AWS.EventBridge();
