@@ -1,25 +1,29 @@
-import { APIGatewayProxyEvent, Handler, APIGatewayProxyResult } from 'aws-lambda';
-import * as uuid from 'uuid';
-import { middify, formatJSONResponse } from 'lambda-helpers';
-import CreateSinger from '../dtos/createSingerDto';
+import { PostConfirmationTriggerEvent, Context, PostConfirmationTriggerHandler, Callback } from 'aws-lambda';
 import singerService from '../database';
+import Singer from '../domain/Singer';
 
-export const handler: Handler = middify(
-  async (event: APIGatewayProxyEvent & CreateSinger): Promise<APIGatewayProxyResult> => {
-    const { firstName, lastName, stageName, email } = event.body;
-    try {
-      const singerId: string = uuid.v4();
-      const singer = await singerService.createSinger({
-        singerId,
-        firstName,
-        lastName,
-        stageName,
-        email,
-      });
+export const handler: PostConfirmationTriggerHandler = async (
+  event: PostConfirmationTriggerEvent,
+  context: Context,
+  callback: Callback
+) => {
+  const { sub, email, given_name, family_name, preferred_username } = event.request.userAttributes;
+  const tableName = process.env.singersTable!;
+  const singer: Singer = {
+    singerId: sub,
+    firstName: given_name,
+    lastName: family_name,
+    stageName: preferred_username,
+    email,
+  };
 
-      return formatJSONResponse(201, singer);
-    } catch (err) {
-      return formatJSONResponse(500, err);
-    }
+  try {
+    const created: Singer = await singerService.createSinger(singer);
+    console.log(JSON.stringify(created));
+
+    callback(null, event);
+  } catch (err) {
+    console.log(err);
+    callback(err, null);
   }
-);
+};
