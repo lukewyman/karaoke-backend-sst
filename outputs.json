@@ -1,0 +1,30 @@
+{
+  "test-karaoke-singers-table": {
+    "ExportsOutputFnGetAttsingersTable6C0E792DArnAC49F000": "arn:aws:dynamodb:us-west-2:919980474747:table/test-karaoke-singers",
+    "ExportsOutputRefsingersTable6C0E792DBBB6EB46": "test-karaoke-singers"
+  },
+  "test-karaoke-auth": {
+    "UserPoolClientId": "hr1bg23u7loj7nc69lfj1v4od",
+    "UserPoolId": "us-west-2_1801yZ5i6",
+    "IdentityPoolId": "us-west-2:4fb8d917-d235-4359-a1af-c8f768881426"
+  },
+  "test-karaoke-event-bus": {
+    "karaokeEventBusName": "testkaraokeeventbuskaraokebus3A0A35DF",
+    "karaokeEventBusArn": "arn:aws:events:us-west-2:919980474747:event-bus/testkaraokeeventbuskaraokebus3A0A35DF",
+    "ExportsOutputRefkaraokebus43741D8975F822E7": "testkaraokeeventbuskaraokebus3A0A35DF",
+    "ExportsOutputFnGetAttkaraokebus43741D89Arn866CA913": "arn:aws:events:us-west-2:919980474747:event-bus/testkaraokeeventbuskaraokebus3A0A35DF"
+  },
+  "test-karaoke-rotations": {
+    "RotationsApiEndpoint": "https://i2gs3pdg08.execute-api.us-west-2.amazonaws.com"
+  },
+  "test-karaoke-performance-history": {
+    "PerformanceHistoryApiEndpoint": "https://kx64ndzk3l.execute-api.us-west-2.amazonaws.com",
+    "ExportsOutputFnGetAtthistorylogger7C190503ArnE66A9C4A": "arn:aws:lambda:us-west-2:919980474747:function:test-karaoke-performance-his-historylogger7C190503-624BlCdSJhf2"
+  },
+  "test-karaoke-singers": {
+    "SingersApiEndpoint": "https://b0zat78z4j.execute-api.us-west-2.amazonaws.com"
+  },
+  "test-karaoke-song-library": {
+    "SongLibraryApiEndpoint": "https://1as7dzgwfd.execute-api.us-west-2.amazonaws.com"
+  }
+}
