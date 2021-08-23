@@ -2,6 +2,7 @@ import { RemovalPolicy } from '@aws-cdk/core';
 import * as sst from '@serverless-stack/resources';
 import * as targets from '@aws-cdk/aws-events-targets';
 import * as events from '@aws-cdk/aws-events';
+import { getRemovalPolicy } from './RemovalPolicy';
 
 export default class PerformanceHistoryStack extends sst.Stack {
   constructor(scope: sst.App, id: string, performanceCompletedRule: events.Rule, props?: sst.StackProps) {
@@ -17,7 +18,7 @@ export default class PerformanceHistoryStack extends sst.Stack {
         sortKey: 'performance_date',
       },
       dynamodbTable: {
-        removalPolicy: RemovalPolicy.DESTROY,
+        removalPolicy: getRemovalPolicy(scope),
       },
     });
 

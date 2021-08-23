@@ -1,5 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import * as sst from '@serverless-stack/resources';
+import { getRemovalPolicy } from './RemovalPolicy';
 
 export default class AuthStack extends sst.Stack {
   constructor(scope: sst.App, id: string, singersTable: sst.Table, props?: sst.StackProps) {
@@ -14,7 +15,7 @@ export default class AuthStack extends sst.Stack {
         },
         userPool: {
           signInAliases: { email: true },
-          removalPolicy: cdk.RemovalPolicy.DESTROY,
+          removalPolicy: getRemovalPolicy(scope),
         },
         triggers: {
           postConfirmation: 'src/services/singers/functions/KAR_SNG_create_singer.handler',
