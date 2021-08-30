@@ -10,7 +10,7 @@ export default class AuthStack extends sst.Stack {
       cognito: {
         defaultFunctionProps: {
           runtime: 'python3.8',
-          srcPath: 'src/services/auth',
+          srcPath: 'src/services/singers',
           environment: {
             SINGERS_TABLE: singersTable.dynamodbTable.tableName,
           },
