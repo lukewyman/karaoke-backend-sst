@@ -4,6 +4,7 @@
 /node_modules
 node_modules
 yarn.lock
+outputs.json
 
 # testing
 /coverage
@@ -25,3 +26,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+karaoke_env
+__pycache__

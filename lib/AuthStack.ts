@@ -1,5 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import * as sst from '@serverless-stack/resources';
+import { getRemovalPolicy } from './RemovalPolicy';
 
 export default class AuthStack extends sst.Stack {
   constructor(scope: sst.App, id: string, singersTable: sst.Table, props?: sst.StackProps) {
@@ -8,16 +9,18 @@ export default class AuthStack extends sst.Stack {
     const auth = new sst.Auth(this, 'Auth', {
       cognito: {
         defaultFunctionProps: {
+          runtime: 'python3.8',
+          srcPath: 'src/services/singers',
           environment: {
-            singersTable: singersTable.dynamodbTable.tableName,
+            SINGERS_TABLE: singersTable.dynamodbTable.tableName,
           },
         },
         userPool: {
           signInAliases: { email: true },
-          removalPolicy: cdk.RemovalPolicy.DESTROY,
+          removalPolicy: getRemovalPolicy(scope),
         },
         triggers: {
-          postConfirmation: 'src/services/singers/functions/KAR_SNG_create_singer.handler',
+          postConfirmation: 'KAR_SNG_create_singer.handler',
         },
       },
     });
