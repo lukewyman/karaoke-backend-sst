@@ -7,18 +7,20 @@ export default class SingersStack extends sst.Stack {
 
     const singersApi = new sst.Api(this, 'singers-api', {
       defaultFunctionProps: {
+        runtime: 'python3.8',
+        srcPath: 'src/services/singers',
         environment: {
-          singersTable: singersTable.dynamodbTable.tableName,
+          SINGERS_TABLE: singersTable.dynamodbTable.tableName,
         },
       },
     });
 
     singersApi.addRoutes(this, {
-      'POST /karaoke/singers': 'src/services/singers/functions/KAR_SNG_test_create_singer.handler',
-      'GET /karaoke/singers/{singerId}': 'src/services/singers/functions/KAR_SNG_get_singer.handler',
-      'GET /karaoke/singers': 'src/services/singers/functions/KAR_SNG_get_all_singers.handler',
-      'PUT /karaoke/singers/{singerId}': 'src/services/singers/functions/KAR_SNG_update_singer.handler',
-      'DELETE /karaoke/singers/{singerId}': 'src/services/singers/functions/KAR_SNG_delete_singer.handler',
+      'POST   /karaoke/singers': 'KAR_SNG_test_create_singer.handler',
+      'GET    /karaoke/singers/{singerId}': 'KAR_SNG_get_singer_by_id.handler',
+      'GET    /karaoke/singers': 'KAR_SNG_get_singers.handler',
+      'PUT    /karaoke/singers/{singerId}': 'KAR_SNG_update_singer.handler',
+      'DELETE /karaoke/singers/{singerId}': 'KAR_SNG_delete_singer.handler',
     });
 
     singersApi.attachPermissions([singersTable]);

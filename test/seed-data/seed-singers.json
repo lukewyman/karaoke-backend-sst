@@ -1,0 +1,89 @@
+{
+  "items": [
+    {
+      "singer_id": {
+        "S": "c891be7b-d500-47ca-8d8a-f683e5710231"
+      },
+      "first_name": {
+        "S": "first_name GET"
+      },
+      "last_name": {
+        "S": "last_name GET"
+      },
+      "stage_name": {
+        "S": "stage_name GET"
+      },
+      "email": {
+        "S": "email GET"
+      }
+    },
+    {
+      "singer_id": {
+        "S": "387ec4e2-fafa-4eab-859c-45e1f913607d"
+      },
+      "first_name": {
+        "S": "first_name GET ALL 1"
+      },
+      "last_name": {
+        "S": "last_name GET ALL 1"
+      },
+      "stage_name": {
+        "S": "stage_name GET ALL 1"
+      },
+      "email": {
+        "S": "email GET ALL 1"
+      }
+    },
+    {
+      "singer_id": {
+        "S": "5a11a267-3c53-4c5c-bfa4-fc2b3f002aeb"
+      },
+      "first_name": {
+        "S": "first_name GET ALL 2"
+      },
+      "last_name": {
+        "S": "last_name GET ALL 2"
+      },
+      "stage_name": {
+        "S": "stage_name GET ALL 2"
+      },
+      "email": {
+        "S": "email GET ALL 2"
+      }
+    },
+    {
+      "singer_id": {
+        "S": "8caa07ea-8d71-4a68-bf14-d4aa74564bd9"
+      },
+      "first_name": {
+        "S": "first_name PUT"
+      },
+      "last_name": {
+        "S": "last_name PUT"
+      },
+      "stage_name": {
+        "S": "stage_name PUT"
+      },
+      "email": {
+        "S": "email PUT"
+      }
+    },
+    {
+      "singer_id": {
+        "S": "138c2256-eaad-4457-9ed3-ab66fac34ae6"
+      },
+      "first_name": {
+        "S": "first_name DELETE"
+      },
+      "last_name": {
+        "S": "last_name DELETE"
+      },
+      "stage_name": {
+        "S": "stage_name DELETE"
+      },
+      "email": {
+        "S": "email DELETE"
+      }
+    }
+  ]
+}

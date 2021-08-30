@@ -3,7 +3,7 @@ import uuid
 from dynamodb import create_song
 
 def handler(event, context):
-
+    print(event)
     song = {}
     song['song_id'] = str(uuid.uuid4())
     body = json.loads(event['body'])

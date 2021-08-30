@@ -19,5 +19,7 @@ def handler(event, context):
         print(e)
         response['statusCode'] = 500
         response['body'] = json.dumps(str(e))
+    else:
+        response['statusCode'] = 200
 
     return response

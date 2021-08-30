@@ -9,8 +9,10 @@ export default class AuthStack extends sst.Stack {
     const auth = new sst.Auth(this, 'Auth', {
       cognito: {
         defaultFunctionProps: {
+          runtime: 'python3.8',
+          srcPath: 'src/services/auth',
           environment: {
-            singersTable: singersTable.dynamodbTable.tableName,
+            SINGERS_TABLE: singersTable.dynamodbTable.tableName,
           },
         },
         userPool: {
@@ -18,7 +20,7 @@ export default class AuthStack extends sst.Stack {
           removalPolicy: getRemovalPolicy(scope),
         },
         triggers: {
-          postConfirmation: 'src/services/singers/functions/KAR_SNG_create_singer.handler',
+          postConfirmation: 'KAR_SNG_create_singer.handler',
         },
       },
     });
