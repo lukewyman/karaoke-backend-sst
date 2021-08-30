@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 import json
+import boto3
 
 def handler(event, context):
     performance_data = json.loads(event['body'])
@@ -22,9 +23,11 @@ def handler(event, context):
         }
     ]
 
-    client = boto3.client['events']
+    client = boto3.client('events')
 
     response = {}
+    response['headers'] = {}
+    response['headers']['Content-Type'] = 'application/json'
     try:
         result = client.put_events(Entries=entries)
     except Exception as e:

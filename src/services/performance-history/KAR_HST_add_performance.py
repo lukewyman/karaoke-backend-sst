@@ -1,3 +1,4 @@
+import json
 from dynamodb import create_performance
 
 def handler(event, context):

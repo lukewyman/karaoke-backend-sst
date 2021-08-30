@@ -7,7 +7,9 @@ export default class RotationsStack extends sst.Stack {
     super(scope, id, props);
 
     const completePerformanceFunction = new sst.Function(this, 'complete-performance', {
-      handler: 'src/services/rotations/functions/KAR_ROT_complete_performance.handler',
+      runtime: 'python3.8',
+      srcPath: 'src/services/rotations',
+      handler: 'KAR_ROT_complete_performance.handler',
       environment: {
         KARAOKE_BUS: eventBus.eventBusName,
         PERFORMANCE_COMPLETED_SOURCE: 'karaoke.rotations',

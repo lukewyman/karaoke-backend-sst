@@ -24,6 +24,8 @@ export default class PerformanceHistoryStack extends sst.Stack {
 
     const performanceHistoryApi = new sst.Api(this, 'PerformanceHistoryApi', {
       defaultFunctionProps: {
+        runtime: 'python3.8',
+        srcPath: 'src/services/performance-history',
         environment: {
           PERFORMANCES_TABLE: performancesTable.dynamodbTable.tableName,
         },
@@ -31,7 +33,9 @@ export default class PerformanceHistoryStack extends sst.Stack {
     });
 
     const historyLogger = new sst.Function(this, 'history-logger', {
-      handler: 'src/services/performance-history/functions/KAR_HST_add_performance.handler',
+      runtime: 'python3.8',
+      srcPath: 'src/services/performance-history',
+      handler: 'KAR_HST_add_performance.handler',
       environment: {
         PERFORMANCES_TABLE: performancesTable.dynamodbTable.tableName,
       },
@@ -40,7 +44,7 @@ export default class PerformanceHistoryStack extends sst.Stack {
     performanceCompletedRule.addTarget(new targets.LambdaFunction(historyLogger));
 
     performanceHistoryApi.addRoutes(this, {
-      'GET /karaoke/performances/{singerId}': 'src/services/performance-history/functions/KAR_HST_get_history.handler',
+      'GET /karaoke/performances/{singerId}': 'KAR_HST_get_history.handler',
     });
 
     performanceHistoryApi.attachPermissions([performancesTable]);
