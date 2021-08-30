@@ -1,7 +1,6 @@
 import pytest
 import requests
 import json
-import uuid
 
 @pytest.fixture 
 def singers_api_endpoint():

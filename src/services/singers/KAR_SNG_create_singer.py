@@ -8,6 +8,7 @@ def handler(event, context):
     singer['first_name'] = user['given_name']
     singer['last_name'] = user['family_name']
     singer['stage_name'] = user['preferred_username']
+    singer['email'] = user['email']
 
     try:
         create_singer(singer)
