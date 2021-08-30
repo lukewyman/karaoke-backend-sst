@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "song_id": {
+        "S": "5e529a52-783a-42a1-9677-69518e2847ed"
+      },
+      "title": {
+        "S": "title GET"
+      },
+      "artist": {
+        "S": "artist GET"
+      },
+      "play_duration": {
+        "S": "play_duration GET"
+      }
+    },
+    {
+      "song_id": {
+        "S": "0f0823ce-0692-425e-9df5-d092c087fc28"
+      },
+      "title": {
+        "S": "title GET ALL 1"
+      },
+      "artist": {
+        "S": "artist GET ALL 1"
+      },
+      "play_duration": {
+        "S": "play_duration GET ALL 1"
+      }
+    },
+    {
+      "song_id": {
+        "S": "d53ce3cf-3c01-4ae1-ba57-4f661f0d2ca3"
+      },
+      "title": {
+        "S": "title GET ALL 2"
+      },
+      "artist": {
+        "S": "artist GET ALL 2"
+      },
+      "play_duration": {
+        "S": "play_duration GET ALL 2"
+      }
+    },
+    {
+      "song_id": {
+        "S": "c81cc1b0-dce6-48ba-b382-c0fa2b6a8304"
+      },
+      "title": {
+        "S": "title PUT"
+      },
+      "artist": {
+        "S": "artist PUT"
+      },
+      "play_duration": {
+        "S": "play_duration PUT"
+      }
+    },
+    {
+      "song_id": {
+        "S": "0e4c0895-82bf-42b1-be95-38b5edbd9f71"
+      },
+      "title": {
+        "S": "title DELETE"
+      },
+      "artist": {
+        "S": "artist DELETE"
+      },
+      "play_duration": {
+        "S": "play_duration DELETE"
+      }
+    }
+  ]
+}

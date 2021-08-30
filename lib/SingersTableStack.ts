@@ -1,5 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import * as sst from '@serverless-stack/resources';
+import { getRemovalPolicy } from './RemovalPolicy';
 
 export default class SingersTableStack extends sst.Stack {
   private _singersTable: sst.Table;
@@ -13,7 +14,7 @@ export default class SingersTableStack extends sst.Stack {
       },
       primaryIndex: { partitionKey: 'singer_id' },
       dynamodbTable: {
-        removalPolicy: cdk.RemovalPolicy.DESTROY,
+        removalPolicy: getRemovalPolicy(scope),
       },
     });
 
