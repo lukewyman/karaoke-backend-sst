@@ -15,16 +15,11 @@
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.114.0",
-    "@types/aws-lambda": "^8.10.70",
-    "@types/axios": "^0.14.0",
-    "@types/uuid": "^8.3.1",
-    "axios": "^0.21.1",
-    "lerna": "^3.22.1"
+    "@types/aws-lambda": "^8.10.70"
   },
   "dependencies": {
     "@aws-cdk/core": "1.114.0",
     "@serverless-stack/cli": "0.40.4",
-    "@serverless-stack/resources": "0.40.4",
-    "uuid": "^8.3.2"
+    "@serverless-stack/resources": "0.40.4"
   }
 }
