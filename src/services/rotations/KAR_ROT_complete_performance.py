@@ -2,6 +2,8 @@ import os
 from datetime import datetime
 import json
 import boto3
+from rotations_db import update_rotation
+from rotations_event_bus import put_performance_completed_event
 
 def handler(event, context):
     performance_data = json.loads(event['body'])

@@ -9,13 +9,13 @@ import SongLibraryStack from './SongLibraryStack';
 
 export default function main(app: sst.App): void {
   app.setDefaultFunctionProps({
-    runtime: 'nodejs12.x',
+    runtime: 'python3.8',
   });
 
   const singersTableStack = new SingersTableStack(app, 'singers-table');
   const authStack = new AuthStack(app, 'auth', singersTableStack.singersTable);
   const eventBusStack = new EventBusStack(app, 'event-bus');
-  new RotationsStack(app, 'rotations', eventBusStack.eventBus);
+  // new RotationsStack(app, 'rotations', eventBusStack.eventBus);
   new PerformanceHistoryStack(app, 'performance-history', eventBusStack.performanceCompletedRule);
   new SingersStack(app, 'singers', singersTableStack.singersTable);
   new SongLibraryStack(app, 'song-library');
