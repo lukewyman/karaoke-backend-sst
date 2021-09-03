@@ -25,7 +25,7 @@ export default class PerformanceHistoryStack extends sst.Stack {
     const performanceHistoryApi = new sst.Api(this, 'PerformanceHistoryApi', {
       defaultFunctionProps: {
         runtime: 'python3.8',
-        srcPath: 'src/services/performance-history',
+        srcPath: 'src/karaoke/performance-history',
         environment: {
           PERFORMANCES_TABLE: performancesTable.dynamodbTable.tableName,
         },
@@ -34,7 +34,7 @@ export default class PerformanceHistoryStack extends sst.Stack {
 
     const historyLogger = new sst.Function(this, 'history-logger', {
       runtime: 'python3.8',
-      srcPath: 'src/services/performance-history',
+      srcPath: 'src/karaoke/performance-history',
       handler: 'KAR_HST_add_performance.handler',
       environment: {
         PERFORMANCES_TABLE: performancesTable.dynamodbTable.tableName,

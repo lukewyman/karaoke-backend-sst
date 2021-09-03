@@ -6,7 +6,7 @@ export default class RotationsStack extends sst.Stack {
   constructor(scope: sst.App, id: string, eventBus: events.EventBus, props?: sst.StackProps) {
     super(scope, id, props);
 
-    const rotationsSrcPath = 'src/services/rotations';
+    const rotationsSrcPath = 'src/karaoke/rotations';
 
     const completePerformanceFunction = new sst.Function(this, 'complete-performance', {
       srcPath: rotationsSrcPath,

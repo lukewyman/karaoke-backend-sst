@@ -28,3 +28,4 @@ yarn-error.log*
 
 karaoke_env
 __pycache__
+karaoke.egg-info

@@ -8,7 +8,7 @@ export default class SingersStack extends sst.Stack {
     const singersApi = new sst.Api(this, 'singers-api', {
       defaultFunctionProps: {
         runtime: 'python3.8',
-        srcPath: 'src/services/singers',
+        srcPath: 'src/karaoke/singers',
         environment: {
           SINGERS_TABLE: singersTable.dynamodbTable.tableName,
         },

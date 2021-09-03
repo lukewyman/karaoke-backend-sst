@@ -5,7 +5,7 @@ import uuid
 
 @pytest.fixture 
 def song_library_api_endpoint():
-    with open('test/integration/outputs.json') as outputs_file:
+    with open('src/test/integration/outputs.json') as outputs_file:
         outputs = json.load(outputs_file)
 
     endpoint = outputs['test-karaoke-song-library']['SongLibraryApiEndpoint']
