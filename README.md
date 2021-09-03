@@ -25,7 +25,7 @@ If you'd like to try your hand at playing around with Karaoke Backend, [these in
 
 ### Architectural Overview
 
-<img src="site-images/karaoke-overview.png" width="800" />
+<img src="site/arch-diags/karaoke-overview.png" width="800" />
 
 ## Microservices
 

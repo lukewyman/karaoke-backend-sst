@@ -1,3 +1,3 @@
 ## Song Library Microservice
 
-<img src="../../../site-images/karaoke-song-lib.png" width="750">
+<img src="../../../site/arch-diags/karaoke-song-lib.png" width="750">

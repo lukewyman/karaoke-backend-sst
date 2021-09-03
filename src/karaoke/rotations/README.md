@@ -1,6 +1,6 @@
 ## Rotations Microservice
 
-<img src="../../../site-images/karaoke-rotations.png" width="850">
+<img src="../../../site/arch-diags/karaoke-rotations.png" width="850">
 
 Currently, this microservice is a simple test harness for the Event Bus:
 

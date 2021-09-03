@@ -1,3 +1,3 @@
 ## Singers Microservice
 
-<img src="../../../site-images/singers-architecture.png" width="750">
+<img src="../../../site/arch-diags/singers-architecture.png" width="750">
