@@ -1,6 +1,6 @@
 ## Performance History Microservice
 
-<img src="../../../site/arch-diags/karaoke-perf-hist.png" width="700" />
+<img src="arch-diags/karaoke-perf-hist.png" width="700" />
 
 This simple microservice is fundamentally an event log. `PerformanceCompleted` events are put on the Event Bus by the [Rotations](../rotations) microservice whenever a singer has finished singing:
 
