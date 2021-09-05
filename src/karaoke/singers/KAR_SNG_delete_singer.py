@@ -1,5 +1,5 @@
 import json
-from dynamodb import delete_singer
+from singers_db import delete_singer
 
 def handler(event, context):
     singer_id = event['pathParameters']['singerId']

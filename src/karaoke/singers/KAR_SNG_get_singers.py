@@ -1,5 +1,5 @@
 import json
-from dynamodb import get_all_singers 
+from singers_db import get_all_singers 
 
 def handler(event, context):
 

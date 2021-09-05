@@ -1,5 +1,5 @@
 import json
-from dynamodb import update_singer
+from singers_db import update_singer
 
 def handler(event, context):
     singer = json.loads(event['body'])

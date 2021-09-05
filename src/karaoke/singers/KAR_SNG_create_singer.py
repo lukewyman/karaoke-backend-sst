@@ -1,4 +1,4 @@
-from dynamodb import create_singer
+from singers_db import create_singer
 
 def handler(event, context):
     user = event['request']['userAttributes']

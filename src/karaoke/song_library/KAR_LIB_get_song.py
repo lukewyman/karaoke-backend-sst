@@ -1,5 +1,5 @@
 import json
-from dynamodb import get_song
+from songs_db import get_song
 
 def handler(event, context):
     song_id = event['pathParameters']['songId']
