@@ -19,7 +19,7 @@ export default class SongLibraryStack extends sst.Stack {
     const songLibraryApi = new sst.Api(this, 'SongLibraryApi', {
       defaultFunctionProps: {
         runtime: 'python3.8',
-        srcPath: 'src/karaoke/song-library',
+        srcPath: 'src/karaoke/song_library',
         environment: {
           SONGS_TABLE: songsTable.dynamodbTable.tableName,
         },
