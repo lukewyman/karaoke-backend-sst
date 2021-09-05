@@ -2,7 +2,7 @@
 
 _(Last Updated: August 30, 2021)_
 
-This is a demo project that I have been working on as a way to wrap my head around building a backend using AWS serverless services and [Serverless Stack (sst)](https://serverless-stack.com. I chose Serverless Stack over the Serverless framework because:
+This is a demo project that I have been working on as a way to wrap my head around building a backend using AWS serverless services and [Serverless Stack (sst)](https://serverless-stack.com). I chose Serverless Stack over the Serverless framework because:
 
 - I think it does a better job of thinking cloud-natively. Cloud services weren't designed to be run locally. Forcing serverless applications to follow the old development paradigm of locally installing databases and other infrastructure for smoke testing has been a pain point for me.
 - I love [Live Lambda](https://docs.serverless-stack.com/live-lambda-development). API Gateway, DynamoDB and other infrastructure run in the cloud, while pointing to my local Lambda code so that I can smoke test before deploying.
@@ -31,19 +31,19 @@ If you'd like to try your hand at playing around with Karaoke Backend, [these in
 
 (Each microservice has it's own detailed diagram and description)
 
-### [Singers](src/services/singers)
+### [Singers](site/singers.md)
 
 This is, for the most part, a basic "CRUD" microservice. Singers are created by the post-confirmation Cognito trigger when users sign up, rather than a POST endpoint.
 
-### [Song Library](src/services/song-library)
+### [Song Library](site/song-library.md)
 
 This microservice is still just a CRUD service. Eventually, it will coordinate with uploading song media to S3 with media streaming ability.
 
-### [Rotations](src/services/rotations)
+### [Rotations](site/rotations.md)
 
 While still very much under construction, this microservice is turning out to be the most interesting of the four.
 
-### [Performance History](src/services/performance-history)
+### [Performance History](site/performance-history.md)
 
 This small microservice is fundamentally an event log. A performance is logged when a singer completes a performance. A singer and the KJ are able to view a the singer's performance history.
 
