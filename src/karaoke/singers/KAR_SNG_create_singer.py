@@ -1,6 +1,14 @@
+import sys
+import logging
+import traceback
+import json
 from singers_db import create_singer
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 def handler(event, context):
+    logger.info('event: {event}')
     user = event['request']['userAttributes']
 
     singer = {}
@@ -13,6 +21,13 @@ def handler(event, context):
     try:
         create_singer(singer)
     except Exception as e:
-        print(e)
+        exception_type, exception_value, exception_traceback = sys.exc_info()
+        traceback_string = traceback.format_exception(exception_type, exception_value, exception_traceback)
+        err_msg = json.dumps({
+            "errorType": exception_type.__name__,
+            "errorMessage": str(exception_value),
+            "stackTrace": traceback_string
+        })
+        logger.error(err_msg)
     
     return event
