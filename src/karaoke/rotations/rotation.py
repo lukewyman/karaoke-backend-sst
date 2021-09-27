@@ -1,4 +1,5 @@
 from datetime import datetime
+import uuid
 
 class Rotation:
     def __init__(self, rotation_id):
@@ -41,3 +42,24 @@ class Rotation:
             self._current_singer_index = 0
 
         self.singers = [s for s in self.singers if s != singer]
+
+
+    def to_dict(self):
+        return {
+            'rotation_id': str(self.rotation_id),
+            'performance_date': str(self.performance_date),
+            'singers': self.singers,
+            'current_singer': self._current_singer_index
+        }
+
+    @classmethod
+    def from_dict(cls, rotation_dict):
+        rotation_id = uuid.UUID(rotation_dict['rotation_id'])
+        performance_date = datetime.strptime(rotation_dict['performance_date'], '%Y-%m-%d %H:%M:%S.%f')
+
+        rotation = cls(rotation_id)
+        rotation.performance_date = performance_date
+        rotation.singers = rotation_dict['singers']
+        rotation._current_singer_index = rotation_dict['current_singer']
+
+        return rotation
