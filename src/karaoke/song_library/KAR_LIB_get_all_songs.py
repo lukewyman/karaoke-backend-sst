@@ -1,7 +1,14 @@
+import sys
+import logging
+import traceback
 import json
 from songs_db import get_all_songs
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 def handler(event, context):
+    logger.info(f'event: {event}')
 
     response = {}
     response['headers'] = {}
@@ -10,8 +17,16 @@ def handler(event, context):
     try:
         response['body'] = json.dumps(get_all_songs())
     except Exception as e:
+        exception_type, exception_value, exception_traceback = sys.exc_info()
+        traceback_string = traceback.format_exception(exception_type, exception_value, exception_traceback)
+        err_msg = json.dumps({
+            "errorType": exception_type.__name__,
+            "errorMessage": str(exception_value),
+            "stackTrace": traceback_string
+        })
+        logger.error(err_msg)
         response['statusCode'] = 500
-        response['body'] = str(e)
+        response['body'] = err_msg
     else:
         response['statusCode'] = 200
 

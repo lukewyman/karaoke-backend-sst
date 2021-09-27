@@ -1,7 +1,14 @@
+import sys
+import logging
+import traceback
 import json
 from singers_db import get_singer
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 def handler(event, context):
+    logger.info(f'event: {event}')
     singer_id = event['pathParameters']['singerId']
 
     response = {}
@@ -18,8 +25,16 @@ def handler(event, context):
             response['statusCode'] = 200
             response['body'] = json.dumps(singer)
     except Exception as e:
-        # print(e)
+        exception_type, exception_value, exception_traceback = sys.exc_info()
+        traceback_string = traceback.format_exception(exception_type, exception_value, exception_traceback)
+        err_msg = json.dumps({
+            "errorType": exception_type.__name__,
+            "errorMessage": str(exception_value),
+            "stackTrace": traceback_string
+        })
+        logger.error(err_msg)
+        
         response['statusCode'] = 500
-        response['body'] = json.dumps(str(e))
+        response['body'] = err_msg
 
     return response
